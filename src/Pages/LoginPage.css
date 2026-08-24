@@ -1,0 +1,152 @@
+
+.login-container {
+    width: 100%; 
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    background: #fff;
+    font-family: "Poppins", sans-serif;
+    box-sizing: border-box; 
+    
+}
+
+.login-box {
+    width: 100%;
+    max-width: 850px; 
+    background-color: #d3f2f3;
+    border-radius: 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 60px 50px; 
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    box-sizing: border-box;
+    margin-top: 6rem;  
+}
+
+/* --- Image Section --- */
+.login-image-section {
+    flex: 1; 
+    display: flex;
+    justify-content: center;
+    max-width: 350px;
+}
+
+.login-image-section img {
+    width: 100%;
+    height: auto;
+}
+
+/* --- Form Section --- */
+.login-form {
+    flex: 1;
+    max-width: 350px;
+    text-align: center;
+    padding-left: 30px; 
+}
+
+.login-title {
+    font-size: 26px;
+    color: #333;
+    font-weight: 700;
+    margin-bottom: 40px;
+}
+
+.input-group {
+    position: relative;
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+.input-group input {
+    width: 100%; 
+    height: 50px;
+    background: #ebebeb;
+    border-radius: 25px;
+    border: 2px solid transparent; 
+    padding: 0 20px 0 55px; 
+    font-size: 15px;
+    outline: none;
+    box-sizing: border-box;
+    transition: 0.3s;
+}
+
+.input-group input:focus {
+    border-color: #57b846;
+    background: #fff;
+}
+
+.input-icon {
+    position: absolute;
+    left: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #666;
+    font-size: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.login-btn {
+    width: 100%;
+    height: 50px;
+    background: #57b846;
+    color: white;
+    border-radius: 25px;
+    border: none;
+    font-weight: bold;
+    font-size: 16px;
+    cursor: pointer;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    transition: 0.4s;
+    box-shadow: 0 5px 15px rgba(87, 184, 70, 0.3);
+}
+
+.login-btn:hover {
+    background: #333;
+    transform: translateY(-2px);
+}
+
+.restricted-text{
+    font-size: 14px;
+    color: #666;
+    margin-top: 15px;
+    padding: 10px;
+}
+/* --- Responsive Formatting (The Fix) --- */
+
+@media (max-width: 850px) {
+    .login-box {
+        padding: 40px 30px;
+        flex-direction: column; /* Mobile pe ek ke niche ek */
+    }
+
+    .login-image-section {
+        display: none; /* Mobile par image hata di taake form clean lage */
+    }
+
+    .login-form {
+        padding-left: 0;
+        width: 100%;
+        max-width: 100%;
+    }
+
+    .login-title {
+        margin-bottom: 30px;
+    }
+}
+
+@media (max-width: 480px) {
+    .login-container {
+        padding: 15px;
+        margin: 0;
+    }
+    
+    .login-box {
+        padding: 40px 20px;
+    }
+}

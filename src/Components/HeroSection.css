@@ -1,0 +1,80 @@
+
+body{
+    overflow-x:hidden;
+}
+.hero-section {
+  position: relative;
+  height: 100vh;
+  width: 98.5vw;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  background-color: white;
+}
+ 
+.hero-content {
+  position: absolute;
+  z-index: 10;
+  top: 300px;
+  text-align: center;
+  pointer-events: none;
+}
+
+.hero-title {
+  font-size: 2.5rem;
+  font-weight: bold;
+  color: #0e3946;
+}
+
+.hero-subtitle {
+  font-size: 1.2rem;
+  color: #0e3946;
+}
+
+/* --- Added Media Queries for Hero Section --- */
+
+@media (max-width: 1024px) {
+    .hero-content {
+        top: 250px; /* Tablet par thora upar */
+    }
+    .hero-title {
+        font-size: 2rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .hero-section {
+        width: 100vw; 
+        height: 95vh; 
+    }
+
+    .hero-content {
+        position: relative; 
+        top: 0; 
+        padding: 0 20px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        height: 100%;
+    }
+
+    .hero-title {
+        font-size: 1.8rem;
+        line-height: 1.2;
+    }
+
+    .hero-subtitle {
+        font-size: 1rem;
+        margin-top: 10px;
+    }
+}
+
+@media (max-width: 480px) {
+    .hero-title {
+        font-size: 1.5rem;
+    }
+    .hero-subtitle {
+        font-size: 0.9rem;
+    }
+}

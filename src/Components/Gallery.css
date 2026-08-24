@@ -1,0 +1,150 @@
+
+body{
+    overflow-x:hidden;
+}
+#Gallery {
+    background-color: #d3f2f3;
+    padding: 50px 0px;
+}
+.Gallery-Track {
+  display: flex;
+  will-change: transform; /* Performance boost for motion */
+}
+.Gallery-Heading {
+    font-size: 2.8rem;
+    font-weight: 800;
+    color: #0f4c4e;
+    text-align: center;
+    margin-bottom: 40px;
+    position: relative;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+.Gallery-Heading::after {
+    content: '';
+    display: block;
+    width: 80px;
+    height: 4px;
+    background-color: #1dbbc3;
+    margin: 15px auto 0;
+    border-radius: 2px;
+}   
+
+.Gallery-Container {
+    overflow: hidden;
+    width: 100%;
+    user-select: none;
+    -webkit-user-select: none;
+}
+
+.Gallery-Track {
+    display: flex;
+    gap: 40px;
+    padding: 0 70px;
+    width: fit-content;
+}
+
+.Gallery-Card {
+    min-width: 400px;
+    height: 400px;
+    border-radius: 20px;
+    overflow: hidden;
+    background: white;
+    flex-shrink: 0;
+}
+
+.Gallery-Card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    pointer-events: none;
+}
+
+.Gallery-Btn {
+    display: flex;
+    justify-content: center;
+    margin-top: 40px;
+    margin-bottom: 20px;
+}
+
+.Gallery-Btn button {
+   background-color: #d3f2f3;
+    border: 1.5px solid #1dbbc3; /* Soft border matching the hover color */
+    color: #0f4c4e; /* Darker version for better readability */
+    
+    /* Spacing & Size */
+    padding: 12px 32px;
+    border-radius: 50px; /* Pill shape is more modern/professional */
+    
+    /* Typography */
+    font-size: 16px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    
+    /* Interaction */
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    box-shadow: 0 4px 15px rgba(29, 187, 195, 0.15);
+}
+
+.Gallery-Btn button:hover {
+    background-color: #1dbbc3;
+    color: white;
+    border-color: #1dbbc3;
+    transform: translateY(-3px); 
+    box-shadow: 0 8px 25px rgba(29, 187, 195, 0.3);
+}   
+
+.Gallery-Btn button:active {
+    transform: translateY(-1px); 
+}
+
+/* --- Added Media Queries --- */
+
+@media (max-width: 1024px) {
+    .Gallery-Heading {
+        font-size: 40px;
+        padding: 0 40px;
+    }
+    .Gallery-Track {
+        padding: 0 40px;
+        gap: 25px;
+    }
+    .Gallery-Card {
+        min-width: 300px;
+        height: 300px;
+    }
+}
+
+@media (max-width: 768px) {
+    #Gallery {
+        padding: 40px 0;
+    }
+    .Gallery-Heading {
+        font-size: 30px;
+        padding: 0 20px;
+        text-align: center;
+    }
+    .Gallery-Track {
+        padding: 0 20px;
+        gap: 15px;
+    }
+    .Gallery-Card {
+        min-width: 260px;
+        height: 260px;
+    }
+    .Gallery-Btn button {
+        padding: 10px 24px;
+        font-size: 14px;
+    }
+}
+
+@media (max-width: 480px) {
+    .Gallery-Card {
+        min-width: 220px;
+        height: 220px;
+    }
+}

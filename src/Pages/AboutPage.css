@@ -1,0 +1,624 @@
+@media (prefers-reduced-motion: reduce) {
+
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        transition-duration: 0.01ms !important;
+    }
+}
+
+
+.about-page {
+    background-color: #fff;
+}
+
+.about-page.page-entering {
+    opacity: 0;
+    transform: translateY(18px);
+}
+
+.about-page.page-entered {
+    opacity: 1;
+    transform: translateY(0);
+    transition: opacity 0.55s cubic-bezier(0.22, 1, 0.36, 1),
+        transform 0.55s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.reveal {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1),
+        transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.reveal.animate-in {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.stat-card.reveal.animate-in {
+    transition-delay: calc(var(--stat-i, 0) * 0.1s);
+}
+
+.timeline-item.reveal.animate-in {
+    transition-delay: calc(var(--tl-i, 0) * 0.08s);
+}
+
+/* ── Hero (now light, matches Contact page's white/card look) ── */
+.about-hero {
+    min-height: 100vh;
+    background-color: #ffffff;
+    border-bottom: 1px solid #eee;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 140px 80px 80px;
+    position: relative;
+    overflow: hidden;
+    gap: 40px;
+}
+
+.about-hero-decoration {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+}
+
+.hero-circle {
+    position: absolute;
+    border-radius: 50%;
+    border: 1px solid rgba(29, 187, 195, 0.18);
+}
+
+.hc1 {
+    width: 500px;
+    height: 500px;
+    top: -200px;
+    right: -100px;
+}
+
+.hc2 {
+    width: 300px;
+    height: 300px;
+    bottom: -100px;
+    left: -80px;
+}
+
+.hc3 {
+    width: 180px;
+    height: 180px;
+    top: 30%;
+    left: 40%;
+    border-color: rgba(29, 187, 195, 0.1);
+}
+
+.about-hero-content {
+    position: relative;
+    z-index: 2;
+    max-width: 600px;
+    opacity: 0;
+    transform: translateY(28px);
+    animation: slideUp 0.7s cubic-bezier(0.22, 1, 0.36, 1) 0.2s forwards;
+}
+
+.about-hero-visual {
+    position: relative;
+    z-index: 2;
+    flex-shrink: 0;
+    opacity: 0;
+    transform: translateX(30px);
+    animation: slideLeft 0.7s cubic-bezier(0.22, 1, 0.36, 1) 0.35s forwards;
+}
+
+.about-tag {
+    display: inline-block;
+    background-color: rgba(29, 187, 195, 0.12);
+    color: #17a8af;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    padding: 6px 16px;
+    border-radius: 8px;
+    border: 1px solid rgba(29, 187, 195, 0.3);
+    margin-bottom: 20px;
+}
+
+.about-tag.light {
+    background-color: #1dbbc3;
+    color: #fff;
+    border-color: rgba(29, 187, 195, 0.3);
+}
+
+.about-hero-content h1 {
+    font-size: clamp(2.8rem, 5vw, 4.2rem);
+    font-weight: 900;
+    color: #000000;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    line-height: 1.15;
+    margin: 0 0 20px;
+}
+
+.about-hero-content h1 span {
+    color: #1dbbc3;
+}
+
+.about-hero-content p {
+    font-size: 1.05rem;
+    color: #666;
+    line-height: 1.8;
+    margin-bottom: 36px;
+    max-width: 500px;
+}
+
+.about-hero-btns {
+    display: flex;
+    gap: 14px;
+    flex-wrap: wrap;
+}
+
+/* ── Buttons (matched to Contact page's submit-btn / social-link styling) ── */
+.btn-primary {
+    background-color: #1dbbc3;
+    color: #fff;
+    border: none;
+    padding: 14px 28px;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.15s ease;
+    font-family: 'DM Sans', sans-serif;
+}
+
+.btn-primary:hover {
+    background-color: #179ea5;
+    transform: translateY(-2px);
+}
+
+.btn-outline {
+    background: transparent;
+    color: #333;
+    border: 1.5px solid rgba(0, 0, 0, 0.15);
+    padding: 14px 28px;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-family: 'DM Sans', sans-serif;
+}
+
+.btn-outline:hover {
+    background: rgba(29, 187, 195, 0.08);
+    border-color: #1dbbc3;
+    color: #17a8af;
+}
+
+.btn-primary.light {
+    color: #fff;
+}
+
+.btn-primary.light:hover {
+    background-color: #179ea5;
+}
+
+.btn-outline.light {
+    border-color: rgba(255, 255, 255, 0.6);
+    color: #fff;
+}
+
+.btn-outline.light:hover {
+    background: rgba(255, 255, 255, 0.15);
+    border-color: #fff;
+    color: #fff;
+}
+
+.hero-badge {
+    width: 220px;
+    height: 220px;
+    border-radius: 50%;
+    background: rgba(29, 187, 195, 0.08);
+    border: 2px solid rgba(29, 187, 195, 0.25);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    animation: pulse 3s ease-in-out infinite;
+}
+
+@keyframes pulse {
+
+    0%,
+    100% {
+        box-shadow: 0 0 0 0 rgba(29, 187, 195, 0.15);
+    }
+
+    50% {
+        box-shadow: 0 0 0 24px rgba(29, 187, 195, 0);
+    }
+}
+
+.badge-inner {
+    text-align: center;
+}
+
+.badge-title {
+    display: block;
+    font-size: 2.2rem;
+    font-weight: 900;
+    color: #1dbbc3;
+}
+
+.badge-sub {
+    display: block;
+    font-size: 13px;
+    color: #888;
+    letter-spacing: 2px;
+    margin-top: 4px;
+}
+
+/* ── Stats band keeps the teal accent block, like Contact page's accent color ── */
+.about-stats {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    background-color: #1dbbc3;
+}
+
+.stat-card {
+    padding: 48px 20px;
+    text-align: center;
+    border-right: 1px solid rgba(255, 255, 255, 0.2);
+    transition: background 0.3s ease;
+}
+
+.stat-card:last-child {
+    border-right: none;
+}
+
+.stat-card:hover {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.stat-value {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.8rem;
+    font-weight: 900;
+    color: #fff;
+    line-height: 1;
+    margin-bottom: 8px;
+}
+
+.stat-label {
+    font-size: 13px;
+    color: rgba(255, 255, 255, 0.85);
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    font-weight: 600;
+}
+
+.about-section {
+    padding: 100px 80px;
+    max-width: 1300px;
+    margin: 0 auto;
+}
+
+.section-label {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: #1dbbc3;
+    margin-bottom: 12px;
+}
+
+.about-history {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: start;
+    margin-top: 8px;
+}
+
+.history-text h2 {
+    font-size: clamp(1.8rem, 3vw, 2.6rem);
+    font-weight: 900;
+    color: #000000;
+    margin: 0 0 24px;
+    line-height: 1.2;
+}
+
+.history-text h2 span {
+    color: #1dbbc3;
+}
+
+.history-text p {
+    font-size: 15px;
+    color: #666;
+    line-height: 1.9;
+    margin-bottom: 16px;
+}
+
+/* Timeline */
+.history-timeline {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    padding-left: 16px;
+    border-left: 2px solid #d3f2f3;
+}
+
+.timeline-item {
+    display: grid;
+    grid-template-columns: 56px 20px 1fr;
+    align-items: center;
+    gap: 12px;
+    padding: 14px 0;
+    position: relative;
+}
+
+.timeline-year {
+    font-size: 13px;
+    font-weight: 700;
+    color: #1dbbc3;
+    text-align: right;
+}
+
+.timeline-dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background-color: #1dbbc3;
+    border: 2px solid #fff;
+    box-shadow: 0 0 0 3px rgba(29, 187, 195, 0.2);
+    margin-left: -92px;
+    flex-shrink: 0;
+}
+
+.timeline-event {
+    font-size: 14px;
+    color: #333;
+    font-weight: 500;
+}
+
+/* ── Vision / Mission: recolored to the light card look used on Contact page ── */
+.about-vm {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    gap: 0;
+    background-color: #fff;
+    padding: 0;
+}
+
+.vm-card {
+    padding: 80px 60px;
+}
+
+.vision-card {
+    background-color: #f9fbfb;
+}
+
+.mission-card {
+    background-color: #ffffff;
+}
+
+.vm-divider {
+    width: 2px;
+    background: linear-gradient(to bottom, transparent, #1dbbc3, transparent);
+}
+
+.vm-icon {
+    font-size: 2.5rem;
+    margin-bottom: 16px;
+    color: #1dbbc3;
+    display: flex;
+    align-items: center;
+}
+
+.vision-card .section-label,
+.mission-card .section-label {
+    color: #1dbbc3;
+}
+
+.vm-card h3 {
+    font-size: 1.6rem;
+    font-weight: 700;
+    margin: 0 0 20px;
+    line-height: 1.3;
+    color: #1a1a1a;
+}
+
+.vm-card p {
+    font-size: 15px;
+    line-height: 1.9;
+    color: #555;
+}
+
+.about-cta {
+    padding: 100px 80px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.cta-decoration {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+}
+
+.cta-circle {
+    position: absolute;
+    border-radius: 50%;
+    border: 1px solid rgba(29, 187, 195, 0.1);
+}
+
+.cc1 {
+    width: 400px;
+    height: 400px;
+    top: -150px;
+    right: -100px;
+}
+
+.cc2 {
+    width: 250px;
+    height: 250px;
+    bottom: -80px;
+    left: -60px;
+}
+
+.cta-content {
+    position: relative;
+    z-index: 2;
+    max-width: 680px;
+    margin: 0 auto;
+}
+
+.cta-content h2 {
+    font-size: clamp(2rem, 3vw, 3rem);
+    font-weight: 900;
+    color: #000000;
+    text-transform: uppercase;
+    margin: 16px 0 20px;
+    line-height: 1.2;
+}
+
+.cta-content h2 span {
+    color: #1dbbc3;
+}
+
+.cta-content p {
+    font-size: 1rem;
+    color: #555;
+    line-height: 1.8;
+    margin-bottom: 36px;
+}
+
+.cta-btns {
+    display: flex;
+    justify-content: center;
+    gap: 14px;
+    flex-wrap: wrap;
+}
+
+/* CTA section sits on white, so its "light" buttons need a solid dark-on-teal pairing */
+.about-cta .btn-primary.light {
+    background-color: #1dbbc3;
+    color: #fff;
+}
+
+.about-cta .btn-primary.light:hover {
+    background-color: #179ea5;
+}
+
+.about-cta .btn-outline.light {
+    border-color: rgba(0, 0, 0, 0.15);
+    color: #333;
+}
+
+.about-cta .btn-outline.light:hover {
+    background: rgba(29, 187, 195, 0.08);
+    border-color: #1dbbc3;
+    color: #17a8af;
+}
+
+@keyframes slideUp {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes slideLeft {
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@media (max-width: 1024px) {
+    .about-hero {
+        padding: 130px 40px 70px;
+    }
+
+    .about-section {
+        padding: 80px 40px;
+    }
+
+    .about-history {
+        grid-template-columns: 1fr;
+        gap: 48px;
+    }
+
+    .about-vm {
+        grid-template-columns: 1fr;
+    }
+
+    .vm-divider {
+        display: none;
+    }
+
+    .vm-card {
+        padding: 60px 40px;
+    }
+}
+
+@media (max-width: 768px) {
+    .about-hero {
+        flex-direction: column;
+        text-align: center;
+        padding: 120px 24px 60px;
+    }
+
+    .about-hero-content p {
+        margin: 0 auto 32px;
+    }
+
+    .about-hero-btns {
+        justify-content: center;
+    }
+
+    .about-hero-visual {
+        display: none;
+    }
+
+    .about-stats {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .about-section {
+        padding: 60px 24px;
+    }
+
+    .about-cta {
+        padding: 70px 24px;
+    }
+
+    .vm-card {
+        padding: 50px 24px;
+    }
+}
+
+@media (max-width: 480px) {
+    .about-hero {
+        padding: 110px 18px 50px;
+    }
+
+    .about-hero-content h1 {
+        letter-spacing: 0.5px;
+    }
+
+    .about-section {
+        padding: 50px 18px;
+    }
+
+    .about-cta {
+        padding: 60px 18px;
+    }
+
+    .vm-card {
+        padding: 40px 18px;
+    }
+}
