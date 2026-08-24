@@ -38,17 +38,17 @@ const LoginPage = () => {
           ? "http://localhost:5000"
           : "";
 
-      // const response = await fetch(`${API_URL}/api/login`, {
-      //   method: "POST",
-      //   headers: { "Content-Type": "application/json" },
-      //   body: JSON.stringify({ email, password }),
-      // });
-      // Direct relative path (Vercel automatic route sambhal lega)
-      const response = await fetch("/api/login", {
+      const response = await fetch(`${API_URL}/api/login`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ email, password }),
       });
+      // Direct relative path (Vercel automatic route sambhal lega)
+      // const response = await fetch("/api/login", {
+      //   method: "POST",
+      //   headers: { "Content-Type": "application/json" },
+      //   body: JSON.stringify({ email, password }),
+      // });
 
       const data = await response.json();
 
