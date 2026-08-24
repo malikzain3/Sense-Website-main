@@ -29,8 +29,11 @@ const LoginPage = () => {
   const handleLogin = async (e) => {
     e.preventDefault();
 
+    // Dynamically select API URL (Vercel env var or local Railway fallback)
+    const API_URL = import.meta.env.VITE_API_URL || "https://sense-website-main-production.up.railway.app";
+
     try {
-      const response = await fetch("http://localhost:5000/api/login", {
+      const response = await fetch(`${API_URL}/api/login`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ email, password }),
@@ -39,7 +42,7 @@ const LoginPage = () => {
       const data = await response.json();
 
       if (!response.ok) {
-        toast.error(data.message || "Email ya password galat hai!");
+        toast.error(data.message || "Wrong Credentials!");
         return;
       }
 

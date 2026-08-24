@@ -57,12 +57,13 @@ pool
   .then(() => console.log("✅ Connected to PostgreSQL"))
   .catch((err) => console.error("❌ PostgreSQL connection error:", err));
 
+// AFTER
 app.use(
   cors({
-    origin: ["http://localhost:5173", "http://localhost:3000"],
-    methods: ["GET", "POST"],
+    origin: "*", 
+    methods: ["GET", "POST", "PUT", "DELETE"],
     credentials: true,
-  }),
+  })
 );
 
 app.use(express.json({ limit: "50mb" }));
