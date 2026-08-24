@@ -60,29 +60,36 @@ pool
 // AFTER
 app.use(
   cors({
-    origin: "*", 
+    origin: "*",
     methods: ["GET", "POST", "PUT", "DELETE"],
     allowedHeaders: ["Content-Type", "Authorization"],
     credentials: true,
-  })
+  }),
 );
 
 app.use(cors());
 
-app.use(express.json({ limit: "50mb" }));
-app.use(express.urlencoded({ limit: "50mb", extended: true }));
 app.use((req, res, next) => {
-  res.header("Access-Control-Allow-Origin", "*");
-  res.header("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS");
-  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept, Authorization");
+  res.setHeader("Access-Control-Allow-Origin", "*");
+  res.setHeader(
+    "Access-Control-Allow-Methods",
+    "GET, POST, PUT, DELETE, OPTIONS",
+  );
+  res.setHeader(
+    "Access-Control-Allow-Headers",
+    "Origin, X-Requested-With, Content-Type, Accept, Authorization",
+  );
 
-  // Handle preflight OPTIONS requests immediately
+  // OPTIONS Preflight Handle
   if (req.method === "OPTIONS") {
-    return res.sendStatus(200);
+    return res.status(200).end();
   }
 
   next();
 });
+
+app.use(express.json({ limit: "50mb" }));
+app.use(express.urlencoded({ limit: "50mb", extended: true }));
 // RSVP Endpoints
 app.post("/api/rsvp", async (req, res) => {
   try {
@@ -204,7 +211,7 @@ app.post(
   async (req, res) => {
     const { events = [], gallery = [], team = [] } = req.body;
     const client = await pool.connect();
-    
+
     try {
       await client.query("BEGIN");
 
@@ -215,18 +222,18 @@ app.post(
           `INSERT INTO events (title, description, date, month, year, time, venue, image_url, status, register_link, drive_link) 
            VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11)`,
           [
-            ev.title || '',
-            ev.description || '',
-            ev.date || '',
-            ev.month || '',
-            ev.year || '',
-            ev.time || '',
-            ev.venue || '',
-            ev.image_url || ev.image || '',
-            ev.status || 'upcoming',
-            ev.register_link || '',
-            ev.drive_link || ''
-          ]
+            ev.title || "",
+            ev.description || "",
+            ev.date || "",
+            ev.month || "",
+            ev.year || "",
+            ev.time || "",
+            ev.venue || "",
+            ev.image_url || ev.image || "",
+            ev.status || "upcoming",
+            ev.register_link || "",
+            ev.drive_link || "",
+          ],
         );
       }
 
@@ -234,11 +241,8 @@ app.post(
       await client.query("DELETE FROM gallery");
       for (const gal of gallery) {
         await client.query(
-          `INSERT INTO gallery (image_url, caption) VALUES ($1, $2)`, 
-          [
-            gal.image_url || gal.image || '',
-            gal.caption || ''
-          ]
+          `INSERT INTO gallery (image_url, caption) VALUES ($1, $2)`,
+          [gal.image_url || gal.image || "", gal.caption || ""],
         );
       }
 
@@ -246,18 +250,19 @@ app.post(
       await client.query("DELETE FROM team");
       for (const tm of team) {
         // Parse rank to integer, fallback to 99 if missing/invalid
-        const safeRank = tm.rank && !isNaN(tm.rank) ? parseInt(tm.rank, 10) : 99;
+        const safeRank =
+          tm.rank && !isNaN(tm.rank) ? parseInt(tm.rank, 10) : 99;
 
         await client.query(
           `INSERT INTO team (name, role, image_url, category, rank) 
            VALUES ($1, $2, $3, $4, $5)`,
           [
-            tm.name || '',
-            tm.role || tm.designation || '',
-            tm.image_url || tm.image || '',
-            tm.category || 'Team',
-            safeRank
-          ]
+            tm.name || "",
+            tm.role || tm.designation || "",
+            tm.image_url || tm.image || "",
+            tm.category || "Team",
+            safeRank,
+          ],
         );
       }
 
@@ -270,7 +275,7 @@ app.post(
     } finally {
       client.release();
     }
-  }
+  },
 );
 
 // Admin Login Endpoint
