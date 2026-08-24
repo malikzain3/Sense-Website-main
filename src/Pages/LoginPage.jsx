@@ -29,11 +29,14 @@ const LoginPage = () => {
   const handleLogin = async (e) => {
     e.preventDefault();
 
-    // Hardcoded absolute fallback URL to prevent broken Vercel path joins
-    const BASE_URL = "https://sense-website-main-production.up.railway.app";
-
     try {
-      const response = await fetch(`${BASE_URL}/api/login`, {
+      // Automatically picks local server for localhost, Railway for production
+      const API_URL =
+        window.location.hostname === "localhost" || window.location.hostname === "127.0.0.1"
+          ? "http://localhost:5000"
+          : (import.meta.env.VITE_API_URL || "https://sense-website-main-production.up.railway.app");
+
+      const response = await fetch(`${API_URL}/api/login`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ email, password }),
