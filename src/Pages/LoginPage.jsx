@@ -37,12 +37,14 @@ const LoginPage = () => {
         window.location.hostname === "127.0.0.1"
           ? "http://localhost:5000"
           : "";
-
-      const response = await fetch(`${API_URL}/api/login`, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ email, password }),
-      });
+      const response = await fetch(
+        "https://sense-website-main-production.up.railway.app/api/login",
+        {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ email, password }),
+        },
+      );
 
       const data = await response.json();
 
