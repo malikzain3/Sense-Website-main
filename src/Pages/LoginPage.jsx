@@ -31,10 +31,12 @@ const LoginPage = () => {
 
     try {
       // Automatically picks local server for localhost, Railway for production
+      // Local host handles port 5000 directly, production routes through Vercel rewrite
       const API_URL =
-        window.location.hostname === "localhost" || window.location.hostname === "127.0.0.1"
+        window.location.hostname === "localhost" ||
+        window.location.hostname === "127.0.0.1"
           ? "http://localhost:5000"
-          : (import.meta.env.VITE_API_URL || "https://sense-website-main-production.up.railway.app");
+          : "";
 
       const response = await fetch(`${API_URL}/api/login`, {
         method: "POST",
