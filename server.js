@@ -279,7 +279,7 @@ app.post(
 );
 
 // Admin Login Endpoint
-app.post("/api/login", loginLimiter, async (req, res) => {
+app.post("/api/login", async (req, res) => {
   const { email, password } = req.body;
 
   const adminEmail = process.env.ADMIN_EMAIL || "admin@sense.com";
